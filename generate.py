@@ -31,7 +31,7 @@ if __name__ == '__main__':
         with open(folder + '.tex', 'w') as f:
             f.write(header(folder))
             for ch in range(len(os.listdir('CH'))):
-                f.write(f"\n\\input{{CH/C{ch:03}.tex}}")
+                f.write(f"\n\\input{{CH/C{ch+1:03}.tex}}")
             f.write('\n\\end{document}')
 
         os.system(f'latexmk -xelatex {folder}.tex')
