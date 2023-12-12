@@ -1,13 +1,15 @@
+name: PDF
 on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Compile
-        uses: xu-cheng/texlive-action/full@v1
+        uses: xu-cheng/texlive-action@v2
         with:
+          scheme: full
           run: |
             cp fonts/* /usr/share/fonts
             fc-cache -f -v
