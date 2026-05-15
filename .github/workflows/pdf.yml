@@ -1,5 +1,6 @@
 name: PDF
-on: [push]
+on:
+  push:
 jobs:
   build_latex:
     runs-on: ubuntu-latest
@@ -18,39 +19,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: dream-of-the-red-chamber.pdf
-          asset_name: dream-of-the-red-chamber.pdf
-          tag: latest
-          overwrite: true
-      - name: Release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: journey-to-the-west.pdf
-          asset_name: journey-to-the-west.pdf
-          tag: latest
-          overwrite: true
-      - name: Release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: romance-of-the-three-kingdoms.pdf
-          asset_name: romance-of-the-three-kingdoms.pdf
-          tag: latest
-          overwrite: true
-      - name: Release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: the-plum-in-the-golden-vase.pdf
-          asset_name: the-plum-in-the-golden-vase.pdf
-          tag: latest
-          overwrite: true
-      - name: Release
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: water-margin.pdf
-          asset_name: water-margin.pdf
+          file: "*.pdf"
+          file_glob: true
           tag: latest
           overwrite: true
