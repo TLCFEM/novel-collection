@@ -1,0 +1,14 @@
+stages:
+  - build
+build_latex:
+  stage: build
+  image: texlive/texlive:latest
+  before_script:
+    - apt-get update && apt-get install -y python3 fontconfig
+  script:
+    - cp fonts/* /usr/share/fonts
+    - fc-cache -f -v
+    - python3 generate.py
+  artifacts:
+    paths:
+      - "*.pdf"
